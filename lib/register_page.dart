@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter/gestures.dart';
+import 'package:hms_test_app/SignInPage.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -134,13 +136,20 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(height: 20),
               Center(
                 child: RichText(
-                  text: const TextSpan(
+                  text: TextSpan(
                     text: "Already have an account? ",
                     style: TextStyle(color: Colors.black),
                     children: [
                       TextSpan(
                         text: "Sign in",
                         style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                        recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignInPage()),
+                          );
+                        },
                       )
                     ],
                   ),
